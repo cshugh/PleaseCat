@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="com.ssafy.model.dao.Following_userDao" >
+
+	<select id ="searchFollowingUser" parameterType="hashmap" resultType="following_user" >
+    	SELECT * FROM following_user 
+    	WHERE follower_no=#{follower_no} 
+    	AND followed_no=#{followed_no}
+	</select>
+	
+    <select id = "searchFollowerUser"  parameterType="int" resultType="int">
+    	SELECT followed_no FROM following_user 
+    	WHERE follower_no=#{follower_no} 
+    </select>
+
+	<select id = "searchFollowedUser"  parameterType="int" resultType="int">
+    	SELECT follower_no FROM following_user 
+    	WHERE followed_no=#{followed_no} 
+    </select>
+
+	<insert id ="insertFollowingUser" parameterType="hashmap" >
+		insert into following_user (follower_no,followed_no)
+					values(#{follower_no:INTEGER},
+						   #{followed_no:INTEGER})	
+	</insert>
+   
+    
+    <delete id="deleteFollowingUser" parameterType="hashmap">
+    	DELETE FROM following_user
+    	WHERE follower_no=#{follower_no:INTEGER}
+    	AND followed_no=#{followed_no:INTEGER}
+    </delete>
+    
+</mapper>

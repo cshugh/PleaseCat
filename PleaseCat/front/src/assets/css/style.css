@@ -1,0 +1,49 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css");
+
+/* header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    padding: 1rem;
+    color: white;
+    background: teal;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    width:100%;
+} */
+
+/* footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    padding: 1rem;
+    color: white;
+    background: teal;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+} */
+
+
+
+/* .Img{
+    width: 20%;
+    height: 100%;
+}
+
+#home{
+    width: 100%;
+    height: 100%;
+} */

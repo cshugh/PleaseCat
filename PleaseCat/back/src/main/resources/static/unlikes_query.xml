@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="com.ssafy.model.dao.UnlikesDao" >
+	<insert id ="insertUnlikes" parameterType="hashmap" >
+		insert into unlikes (user_no,post_no)
+					values(#{user_no:INTEGER},
+						   #{post_no:INTEGER})	
+	</insert>
+   
+    <select id = "searchUnlikes"  parameterType="hashmap" resultType="unlikes">
+    	SELECT * FROM unlikes 
+    	WHERE user_no=#{user_no} 
+    	AND post_no=#{post_no}
+    </select>
+    
+    <delete id="deleteUnlikes" parameterType="hashmap">
+    	DELETE FROM unlikes
+    	WHERE user_no=#{user_no:INTEGER}
+    	AND post_no=#{post_no:INTEGER}
+    </delete>
+</mapper>

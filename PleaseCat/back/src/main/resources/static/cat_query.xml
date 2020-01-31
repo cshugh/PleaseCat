@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="com.ssafy.model.dao.CatDao" >
+	
+	<insert id ="insertCat" parameterType="cat">
+	insert into cat(cat_name,cat_image,age,sex,reg_date,meal_time,skin_disease,
+					cat_location, cat_manager, neuter, cat_desc, hurt,
+					hair_color, eye_color) 
+				values(  <!-- INT로 써줘서 오류 났었음 INTEGER해줘야함 -->
+					  #{cat_name:VARCHAR}
+					  ,#{cat_image:VARCHAR}
+					  ,#{age:INTEGER}
+					  ,#{sex:VARCHAR}
+					  ,#{reg_date:VARCHAR}
+					  ,#{meal_time:VARCHAR}
+					  ,#{skin_disease:INTEGER}
+					  ,#{cat_location:VARCHAR}
+					  ,#{cat_manager:INTEGER}
+					  ,#{neuter:INTEGER}
+					  ,#{cat_desc:VARCHAR}
+					  ,#{hurt:INTEGER}
+					  ,#{hair_color:VARCHAR}
+					  ,#{eye_color:VARCHAR})			
+	</insert>
+	
+	<update id ="updateCat" parameterType="cat">
+	update cat set cat_name = #{cat_name:VARCHAR},
+						cat_image=#{cat_image:VARCHAR},
+				   		age=#{age:INTEGER},
+				   		sex=#{sex:VARCHAR},
+				   		meal_time=#{meal_time:VARCHAR},
+				   		skin_disease=#{skin_disease:INTEGER},
+						cat_location=#{cat_location:VARCHAR},
+						cat_manager=#{cat_manager:INTEGER}, 
+						neuter=#{neuter:INTEGER}, 
+						cat_desc=#{cat_desc:VARCHAR}, 
+						hurt=#{hurt:INTEGER},
+						hair_color=#{hair_color:VARCHAR}, 
+						eye_color=#{eye_color:VARCHAR}) 
+	where	cat_no = #{cat_no:INTEGER}		
+	</update>
+   
+    <select id = "searchCat" parameterType="int" resultType="cat">
+    	select * from cat where cat_no=#{no}
+    </select>
+    
+    <select id = "searchAllCat" resultType="cat">
+    	select * from cat
+    </select>
+    
+    <delete id="deleteCat" parameterType="int">
+    	delete from cat where cat_no=#{no}
+    </delete>
+    
+</mapper>

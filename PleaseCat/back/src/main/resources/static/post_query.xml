@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="com.ssafy.model.dao.PostDao" >
+	
+	<insert id ="insertPost" parameterType="post">
+	insert into post(user_no,cat_no, post_image, post_time, post_content,post_like,post_unlike,post_location,post_report) 
+				values(  <!-- INT로 써줘서 오류 났었음 INTEGER해줘야함 -->
+					  #{user_no:INTEGER}
+					  ,#{cat_no:INTEGER}
+					  ,#{post_image:VARCHAR}
+					  ,#{post_time:VARCHAR}
+					  ,#{post_content:VARCHAR}
+					  ,#{post_like:INTEGER}
+					  ,#{post_unlike:INTEGER}
+					  ,#{post_location:VARCHAR}
+					  ,#{post_report:INTEGER})			
+	</insert>
+	
+	<update id ="updatePost" parameterType="post">
+	update post set post_content=#{post_content:VARCHAR}) 
+	where	post_no = #{post_no:INTEGER}	
+	</update>
+	
+	
+	<delete id="deletePost" parameterType="int">
+		delete from post where post_no=#{no}
+	</delete>
+	
+	<select id = "searchPost" parameterType="int" resultType="post">
+    	select * from post where post_no=#{no}
+    </select>
+   
+    <select id = "searchPostUser" parameterType="int" resultType="post">
+    	select * from post where user_no=#{no}
+    </select>
+    
+    <select id = "searchPostCat" parameterType="int" resultType="post">
+    	select * from post where cat_no=#{no}
+    </select>
+    
+    <select id = "searchAllPost" resultType="post">
+    	select * from post 
+    </select>
+
+    
+</mapper>

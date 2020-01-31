@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="com.ssafy.model.dao.CommentDao" >
+	
+	<insert id ="insertComment" parameterType="comment">
+	insert into comment(post_no, user_no,comment_time,comment_content,comment_like,comment_unlike,comment_report) 
+				values(  <!-- INT로 써줘서 오류 났었음 INTEGER해줘야함 -->
+					  #{post_no:INTEGER}
+					  ,#{user_no:INTEGER}
+					  ,#{comment_time:VARCHAR}
+					  ,#{comment_content:VARCHAR}
+					  ,#{comment_like:INTEGER}
+					  ,#{comment_unlike:INTEGER}
+					  ,#{comment_report:INTEGER})			
+	</insert>
+   
+    <select id = "searchCommentPost" parameterType="int" resultType="comment">
+    	select * from comment where post_no=#{no}
+    </select>
+    
+    <select id = "searchCommentUser" parameterType="int" resultType="comment">
+    	select * from comment where user_no=#{no}
+    </select>
+
+	<select id = "searchComment" parameterType="int" resultType="comment">
+    	select * from comment where comment_no=#{no}
+    </select>
+    
+    <delete id="deleteComment" parameterType="int">
+    	delete from comment where comment_no=#{no}
+    </delete>    
+    
+    <update id="updateComment" parameterType="comment">
+    	update comment set comment_content=#{comment_content} 
+    	where comment_no=#{comment_no}
+    </update>
+</mapper>

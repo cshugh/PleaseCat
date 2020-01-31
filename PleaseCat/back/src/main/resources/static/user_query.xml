@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="com.ssafy.model.dao.UserDao" >
+	
+	<insert id ="insertUser" parameterType="user">
+	insert into user(user_email,user_pw, user_id, user_image, user_desc) 
+				values(  <!-- INT로 써줘서 오류 났었음 INTEGER해줘야함 -->
+					  #{user_email:VARCHAR}
+					  ,#{user_pw:VARCHAR}
+					  ,#{user_id:VARCHAR}
+					  ,#{user_image:VARCHAR}
+					  ,#{user_desc:VARCHAR})			
+	</insert>
+   
+    <select id = "searchUser" parameterType="int" resultType="user">
+    	select * from user where user_no=#{no}
+    </select>
+    
+    <select id = "searchUserEmail" parameterType="string" resultType="user">
+    	select * from user where user_email=#{user_email}
+    </select>
+    
+    <update id = "updateUser" parameterType="user">
+    	update user set user_pw=#{user_pw:VARCHAR}
+						, user_id=#{user_id:VARCHAR}
+						, user_image=#{user_image:VARCHAR}
+						, user_desc=#{user_desc:VARCHAR}
+		where user_no = #{user_no:INTEGER}
+    </update>
+   
+    <delete id="deleteUser" parameterType="int">
+   		 delete from user where user_no=#{no}
+    </delete>
+    
+    <select id = "searchAllUser" resultType="user">
+    	select * from user
+    </select>
+</mapper>
